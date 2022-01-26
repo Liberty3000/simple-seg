@@ -19,7 +19,7 @@ def run(ctx, **args):
     pprint.pprint(args)
 
     # check and format thresholding parameters
-    # accepts int or lists of int as option as argument
+    # accepts int or lists of int as argument
     thresh_lo = ast.literal_eval(conf.thresh_lo)
     thresh_hi = ast.literal_eval(conf.thresh_hi)
     if isinstance(thresh_lo, int): thresh_lo = [int(thresh_lo)]
@@ -44,7 +44,6 @@ def run(ctx, **args):
             pixel = arr[i,j]
             # `pixel` will only contain a single integer for luminance images
             if isinstance(pixel, np.uint8): pixel = [pixel]
-            #if not isinstance(pixel, np.ndarray): pixel = np.array(pixel)
 
             # generalized pixel filter for arbitrary number of input channels
             mask = True
@@ -56,7 +55,8 @@ def run(ctx, **args):
 
     # plot the input image and output segmentation map
     fig,axs = mp.subplots(1,2,figsize=(17,7))
-    axs[0].imshow(np.asarray(load(conf.image, roi=conf.roi, mode=mode)), cmap=dict(RGB=None, L='gray')[mode])
+    cmap = dict(RGB=None, L='gray')[mode]
+    axs[0].imshow(np.asarray(load(conf.image, roi=conf.roi, mode=mode)), cmap=cmap)
     axs[0].set_title('Raw Input Image')
     axs[1].imshow(segmap, cmap='gray')
     axs[1].set_title('Predicted Segmentation Map')
