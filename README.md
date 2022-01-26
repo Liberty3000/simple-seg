@@ -82,7 +82,7 @@ bash script.sh
 ```
 To interact with the IPython Jupyter notebook demonstration:
 ```bash
-jupyter notebook notebooks/demo.ipynb
+jupyter notebook demo.ipynb
 ```
 
 ## Tests
