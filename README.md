@@ -15,6 +15,8 @@ ___
 ## Solution
 To install the package and requirements in an isolated environment:
 ```bash
+git clone https://github.com/Liberty3000/simple-seg.git
+cd simple-seg
 virtualenv venv
 source venv/bin/activate
 pip3 install -e .
